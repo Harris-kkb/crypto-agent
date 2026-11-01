@@ -144,3 +144,9 @@ def save_report(text):
 if __name__ == "__main__":
     facts, table = get_facts()
     print(facts)
+    analysis = get_analysis(facts, table)
+    print("\nTYPES OF ANALYSIS THE AI USED:")
+    for t in analysis["analysis_types"]:
+        print("-", t["type"] + ":", t["what_i_looked_at"])
+    print("\nSUMMARY:", analysis["summary"])
+    print("\nReport written to", save_report(build_report(facts, analysis)))
